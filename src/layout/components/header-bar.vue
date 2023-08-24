@@ -21,9 +21,9 @@ const logout = () => {
 <template>
   <a-row>
     <a-col flex="auto">
-      <div class="section_5 flex flex-col">
-        <div class="box_5 flex flex-row">
-          <div class="text-wrapper_6 flex-col">
+      <div class="flex flex-col">
+        <div class="flex flex-row">
+          <div class="flex-col">
             <div class="logo" />
           </div>
           <span class="font-bold font-size-[16px]">222</span>

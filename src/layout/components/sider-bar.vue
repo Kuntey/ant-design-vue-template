@@ -1,5 +1,8 @@
 <template>
-  <sider-menu-wrapper></sider-menu-wrapper>
+  <sider-menu-wrapper
+    @select="onSelect"
+    @open-keys="onOpenKeys"
+  ></sider-menu-wrapper>
 </template>
 
 <script lang="tsx" setup>
@@ -9,45 +12,44 @@ import {
   defaultRouteContext,
   routeContextInjectKey,
 } from "@/components/SiderMenu/RouteContext";
-import { MenuDataItem } from "@/components/SiderMenu/typings";
+import { MenuDataItem, WithFalse } from "@/config/typings";
 import useMenuTree from "@/hooks/use-menu-tree";
 
 const { menuTree } = useMenuTree<MenuDataItem[]>();
 
 const menuData = menuTree.value;
 
+const router = useRouter();
+
 const routeContext = reactive<RouteContextProps>({
   ...defaultRouteContext,
   menuData,
-  selectedKeys: ["111"],
-  openKeys: ["222"],
   locale: false,
   contentWidth: "Fixed",
-  //   ...(pick(toRefs(props), [
-  //     'locale',
-  //     'menuData',
-  //     'openKeys',
-  //     'selectedKeys',
-  //     'contentWidth',
-  //     'disableMobile',
-  //     'fixSiderbar',
-  //     'fixedHeader',
-  //     'headerHeight',
-  //     // 'hasSideMenu',
-  //     // 'hasHeader',
-  //     // 'hasFooter',
-  //     // 'hasFooterToolbar',
-  //     // 'setHasFooterToolbar',
-  //   ]) as any),
-  //   isMobile,
-  //   siderWidth,
-  //   breadcrumb,
-  //   flatMenuData,
-  //   hasSide,
-  //   hasHeader: true,
-  //   flatMenu: hasFlatMenu,
+  selectedKeys: [],
+  openKeys: [],
 });
 provide(routeContextInjectKey, routeContext);
+
+const onSelect = (value: WithFalse<string[]>) => {
+  routeContext.selectedKeys = value as string[];
+};
+
+const onOpenKeys = (value: WithFalse<string[]>) => {
+  routeContext.openKeys = value as string[];
+};
+
+watchEffect(() => {
+  if (router.currentRoute) {
+    const matched = router.currentRoute.value.matched.concat();
+    routeContext.selectedKeys = matched
+      .filter((r) => r.name !== "index")
+      .map((r) => r.path);
+    routeContext.openKeys = matched
+      .filter((r) => r.path !== router.currentRoute.value.path)
+      .map((r) => r.path);
+  }
+});
 </script>
 
 <style lang="less" scoped>

@@ -309,11 +309,12 @@ export default defineComponent({
           mode={props.mode}
           theme={props.theme as "dark" | "light"}
           openKeys={props.openKeys === false ? [] : props.openKeys}
-          //   selectedKeys={props.selectedKeys || []}
+          selectedKeys={props.selectedKeys || []}
           onOpenChange={handleOpenChange}
           onSelect={handleSelect}
           onClick={handleClick}
           {...props.menuProps}
+          style={"border-inline-end: unset"}
         >
           {menuUtil.getNavMenuItems(props.menuData)}
         </Menu>

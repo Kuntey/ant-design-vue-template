@@ -122,7 +122,7 @@ export const defaultRenderLogoAndTitle = (
     return null;
   }
   const logoDom = defaultRenderLogo(logo, logoStyle);
-  const titleDom = <h1>{title}</h1>;
+  const titleDom = title ? <h1>{title}</h1> : null;
   if (layout === "mix" && renderKey === "menuHeaderRender") {
     return null;
   }
@@ -203,7 +203,6 @@ const SiderMenu: FunctionalComponent<SiderMenuProps> = (
   const defaultMenuDom = (
     <BaseMenu
       prefixCls={getPrefixCls()}
-      locale={props.locale || context.locale}
       theme={sTheme.value === "realDark" ? "dark" : sTheme.value}
       mode="inline"
       menuData={hasSplitMenu.value ? context.flatMenuData : context.menuData}
