@@ -23,6 +23,7 @@
         "axios": "^1.4.0",
         "dayjs": "^1.11.9",
         "echarts": "^5.4.3",
+        "js-cookie": "^3.0.5",
         "pinia": "^2.1.6",
         "vite-plugin-mkcert": "^1.15.0",
         "vue": "^3.3.4",

@@ -5,24 +5,24 @@
         alt="logo"
         src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
       /> -->
-      <div class="logo-text">德菲特管理后台</div>
+      <div class="logo-text">管理后台</div>
     </div>
-    <LoginBanner />
+    <!-- <LoginBanner /> -->
     <div class="content">
       <div class="content-inner">
-        <LoginForm />
+        <!-- <LoginForm /> -->
       </div>
       <div class="footer">
-        <Footer />
+        <!-- <Footer /> -->
       </div>
     </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import Footer from "@/components/footer/index.vue";
-import LoginBanner from "./components/banner.vue";
-import LoginForm from "./components/login-form.vue";
+// import Footer from "@/components/footer/index.vue";
+// import LoginBanner from "./components/banner.vue";
+// import LoginForm from "./components/login-form.vue";
 </script>
 
 <style lang="less" scoped>

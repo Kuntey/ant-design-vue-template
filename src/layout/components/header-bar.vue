@@ -1,19 +1,62 @@
 <script lang="ts" setup>
-const selectedKeys1 = ref<string[]>(["2"]);
+import { App } from "ant-design-vue";
+
+// defineProps<{}>();
+
+const { message, modal, notification } = App.useApp();
+
+const userName = ref<string>();
+const userEmail = ref<string>();
+
+const getPopupContainer = () => {
+  // return document.querySelector('.main-content-wrapper')
+  return document.body;
+};
+
+const logout = () => {
+  message.info("退出登录");
+};
 </script>
 
 <template>
-  <div class="logo" />
-  <a-menu
-    v-model:selectedKeys="selectedKeys1"
-    theme="dark"
-    mode="horizontal"
-    :style="{ lineHeight: '64px' }"
-  >
-    <a-menu-item key="1">nav 1</a-menu-item>
-    <a-menu-item key="2">nav 2</a-menu-item>
-    <a-menu-item key="3">nav 3</a-menu-item>
-  </a-menu>
+  <a-row>
+    <a-col flex="auto">
+      <div class="section_5 flex flex-col">
+        <div class="box_5 flex flex-row">
+          <div class="text-wrapper_6 flex-col">
+            <div class="logo" />
+          </div>
+          <span class="font-bold font-size-[16px]">222</span>
+        </div>
+      </div>
+    </a-col>
+    <a-col flex="none">
+      <a-dropdown
+        placement="bottomRight"
+        :trigger="['click']"
+        overlay-class-name="user-dropdown-menu"
+        :overlay-style="{ top: '69px' }"
+        :get-popup-container="getPopupContainer"
+      >
+        <span class="ant-dropdown-link" @click.prevent>
+          <a-avatar>
+            <template #icon>
+              <UserOutlined />
+            </template>
+          </a-avatar>
+          <span class="">{{ userEmail || "-" }}</span>
+          <DownOutlined style="font-weight: bold" />
+        </span>
+        <template #overlay>
+          <a-menu>
+            <a-menu-item @click="logout">
+              <a href="javascript:;">退出登录</a>
+            </a-menu-item>
+          </a-menu>
+        </template>
+      </a-dropdown>
+    </a-col>
+  </a-row>
 </template>
 
 <style lang="less" scoped>
@@ -28,5 +71,17 @@ const selectedKeys1 = ref<string[]>(["2"]);
 .logo {
   float: right;
   margin: 16px 0 16px 24px;
+}
+
+.ant-dropdown-link {
+  font-weight: bold;
+  color: #ffffff;
+  cursor: pointer;
+}
+</style>
+
+<style>
+.user-dropdown-menu {
+  top: 69px !important;
 }
 </style>
