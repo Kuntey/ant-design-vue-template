@@ -21,7 +21,7 @@
           :placeholder="$t('login.form.account.placeholder')"
         >
           <template #prefix>
-            <icon-user />
+            <UserOutlined />
           </template>
         </a-input>
       </a-form-item>
@@ -37,7 +37,7 @@
           allow-clear
         >
           <template #prefix>
-            <icon-lock />
+            <LockOutlined />
           </template>
         </a-input-password>
       </a-form-item>
@@ -66,8 +66,7 @@
 <script lang="ts" setup>
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
-import { Message } from "@arco-design/web-vue";
-import { ValidatedError } from "@arco-design/web-vue/es/form/interface";
+import { message } from "ant-design-vue";
 import { useI18n } from "vue-i18n";
 import { useStorage } from "@vueuse/core";
 import { useUserStore } from "@/store";
@@ -94,7 +93,7 @@ const handleSubmit = async ({
   errors,
   values,
 }: {
-  errors: Record<string, ValidatedError> | undefined;
+  errors: Record<string, any> | undefined;
   values: Record<string, any>;
 }) => {
   if (loading.value) return;
@@ -109,7 +108,7 @@ const handleSubmit = async ({
           ...othersQuery,
         },
       });
-      Message.success(t("login.form.login.success"));
+      message.success(t("login.form.login.success"));
       const { rememberPassword } = loginConfig.value;
       const { account, password } = values;
       // 实际生产环境需要进行加密存储。

@@ -2,8 +2,7 @@ import { defineStore } from "pinia";
 import { notification } from "ant-design-vue";
 import type { RouteRecordNormalized } from "vue-router";
 import defaultSettings from "@/config/settings.json";
-import { NotificationInstance } from "ant-design-vue/es/notification";
-// import { getMenuList } from '@/api/user';
+import { getMenuList } from "@/api/user";
 import { AppState } from "./types";
 
 const useAppStore = defineStore("app", {
@@ -32,10 +31,10 @@ const useAppStore = defineStore("app", {
     toggleTheme(dark: boolean) {
       if (dark) {
         this.theme = "dark";
-        document.body.setAttribute("arco-theme", "dark");
+        document.body.setAttribute("theme", "dark");
       } else {
         this.theme = "light";
-        document.body.removeAttribute("arco-theme");
+        document.body.removeAttribute("theme");
       }
     },
     toggleDevice(device: string) {
@@ -45,28 +44,27 @@ const useAppStore = defineStore("app", {
       this.hideMenu = value;
     },
     async fetchServerMenuConfig() {
-      //   let notifyInstance: NotificationInstance | null = null;
-      //   try {
-      //     notifyInstance = notification.info({
-      //       id: 'menuNotice', // Keep the instance id the same
-      //       content: 'loading',
-      //       closable: true,
-      //     });
-      //     const { data } = await getMenuList();
-      //     this.serverMenu = data;
-      //     notifyInstance = notification.success({
-      //       id: 'menuNotice',
-      //       content: 'success',
-      //       closable: true,
-      //     });
-      //   } catch (error) {
-      //     // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      //     notifyInstance = notification.error({
-      //       id: 'menuNotice',
-      //       content: 'error',
-      //       closable: true,
-      //     });
-      //   }
+      try {
+        notification.info({
+          id: "menuNotice", // Keep the instance id the same
+          content: "loading",
+          closable: true,
+        });
+        const { data } = await getMenuList();
+        this.serverMenu = data;
+        notification.success({
+          id: "menuNotice",
+          content: "success",
+          closable: true,
+        });
+      } catch (error) {
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        notification.error({
+          id: "menuNotice",
+          content: "error",
+          closable: true,
+        });
+      }
     },
     clearServerMenu() {
       this.serverMenu = [];

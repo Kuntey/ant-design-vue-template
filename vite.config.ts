@@ -20,16 +20,15 @@ export default defineConfig(({ mode, command }) => {
         "~": path.resolve(__dirname, "./"),
         // 设置别名
         "@": path.resolve(__dirname, "./src"),
+        vue: "vue/dist/vue.esm-bundler.js",
       },
       // https://cn.vitejs.dev/config/#resolve-extensions
-      extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json", ".vue"],
+      extensions: [".mjs", ".js", ".ts", ".jsx", ".tsx", ".json"],
     },
     css: {
       preprocessorOptions: {
         less: {
-          modifyVars: {
-            "@ant-prefix": "ant",
-          },
+          modifyVars: {},
           javascriptEnabled: true,
         },
       },

@@ -19,15 +19,18 @@
     },
     "dependencies": {
         "@ant-design/icons-vue": "^6.1.0",
+        "@vueuse/core": "^10.3.0",
         "ant-design-vue": "^4.0.1",
         "axios": "^1.4.0",
         "dayjs": "^1.11.9",
         "echarts": "^5.4.3",
         "js-cookie": "^3.0.5",
+        "mitt": "^3.0.1",
         "pinia": "^2.1.6",
         "vite-plugin-mkcert": "^1.15.0",
         "vue": "^3.3.4",
         "vue-echarts": "^6.6.1",
+        "vue-i18n": "^9.2.2",
         "vue-router": "^4.2.4"
     },
     "devDependencies": {

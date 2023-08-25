@@ -5,7 +5,7 @@ import { useAppStore } from "@/store";
 import appClientMenus from "@/router/app-menus";
 import { cloneDeep } from "@/utils";
 
-export default function useMenuTree<T>() {
+export default function useMenuTree() {
   const permission = usePermission();
   const appStore = useAppStore();
   const appRoute = computed(() => {
@@ -14,7 +14,7 @@ export default function useMenuTree<T>() {
     }
     return appClientMenus;
   });
-  const menuTree = computed<T>(() => {
+  const menuTree = computed(() => {
     const copyRouter = cloneDeep(appRoute.value) as RouteRecordNormalized[];
     copyRouter.sort((a: RouteRecordNormalized, b: RouteRecordNormalized) => {
       return (a.meta.order || 0) - (b.meta.order || 0);
@@ -24,7 +24,7 @@ export default function useMenuTree<T>() {
 
       const collector: any = _routes.map((element) => {
         // no access
-        if (!permission.accessRouter(element) || element.meta?.hideInMenu) {
+        if (!permission.accessRouter(element)) {
           return null;
         }
 
@@ -36,7 +36,7 @@ export default function useMenuTree<T>() {
 
         // route filter hideInMenu true
         element.children = element.children.filter(
-          (x) => x.meta?.hideInMenu !== true
+          (x) => x.meta?.hideInMenu !== true,
         );
 
         // Associated child node

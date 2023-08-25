@@ -1,51 +1,53 @@
 <template>
-  <a-table :columns="columns" :data-source="data">
-    <template #headerCell="{ column }">
-      <template v-if="column.key === 'name'">
-        <span>
-          <smile-outlined />
-          Name
-        </span>
+  <div class="container">
+    <a-table :columns="columns" :data-source="data">
+      <template #headerCell="{ column }">
+        <template v-if="column.key === 'name'">
+          <span>
+            <smile-outlined />
+            Name
+          </span>
+        </template>
       </template>
-    </template>
 
-    <template #bodyCell="{ column, record }">
-      <template v-if="column.key === 'name'">
-        <a>
-          {{ record.name }}
-        </a>
-      </template>
-      <template v-else-if="column.key === 'tags'">
-        <span>
-          <a-tag
-            v-for="tag in record.tags"
-            :key="tag"
-            :color="
-              tag === 'loser'
-                ? 'volcano'
-                : tag.length > 5
-                ? 'geekblue'
-                : 'green'
-            "
-          >
-            {{ tag.toUpperCase() }}
-          </a-tag>
-        </span>
-      </template>
-      <template v-else-if="column.key === 'action'">
-        <span>
-          <a>Invite 一 {{ record.name }}</a>
-          <a-divider type="vertical" />
-          <a>Delete</a>
-          <a-divider type="vertical" />
-          <a class="ant-dropdown-link">
-            More actions
-            <down-outlined />
+      <template #bodyCell="{ column, record }">
+        <template v-if="column.key === 'name'">
+          <a>
+            {{ record.name }}
           </a>
-        </span>
+        </template>
+        <template v-else-if="column.key === 'tags'">
+          <span>
+            <a-tag
+              v-for="tag in record.tags"
+              :key="tag"
+              :color="
+                tag === 'loser'
+                  ? 'volcano'
+                  : tag.length > 5
+                  ? 'geekblue'
+                  : 'green'
+              "
+            >
+              {{ tag.toUpperCase() }}
+            </a-tag>
+          </span>
+        </template>
+        <template v-else-if="column.key === 'action'">
+          <span>
+            <a>Invite 一 {{ record.name }}</a>
+            <a-divider type="vertical" />
+            <a>Delete</a>
+            <a-divider type="vertical" />
+            <a class="ant-dropdown-link">
+              More actions
+              <down-outlined />
+            </a>
+          </span>
+        </template>
       </template>
-    </template>
-  </a-table>
+    </a-table>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -102,3 +104,12 @@ const data = [
   },
 ];
 </script>
+
+<style lang="less" scoped>
+.container {
+  background-color: var(--color-fill-2);
+  padding: 16px 20px;
+  padding-bottom: 0;
+  display: flex;
+}
+</style>
