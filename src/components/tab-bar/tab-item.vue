@@ -84,8 +84,6 @@ import { useRouter, useRoute } from "vue-router";
 import { useTabBarStore } from "@/store";
 import type { TagProps } from "@/store/modules/tab-bar/types";
 import { DEFAULT_ROUTE_NAME, REDIRECT_ROUTE_NAME } from "@/router/constants";
-
-// @ts-ignore
 import { useI18n } from "vue-i18n";
 
 const { t } = useI18n();

@@ -1,5 +1,4 @@
 import { computed } from "vue";
-// @ts-ignore
 import { useI18n } from "vue-i18n";
 import { message } from "ant-design-vue";
 

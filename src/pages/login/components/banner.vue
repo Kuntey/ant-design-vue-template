@@ -16,7 +16,6 @@
 
 <script lang="ts" setup>
 import { computed } from "vue";
-// @ts-ignore
 import { useI18n } from "vue-i18n";
 import bannerImage from "@/assets/images/login-banner.png";
 

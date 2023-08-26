@@ -16,7 +16,6 @@
 <script lang="ts" setup>
 import { PropType } from "vue";
 import { useAppStore } from "@/store";
-// @ts-ignore
 import { useI18n } from "vue-i18n";
 import FormWrapper from "./form-wrapper.vue";
 

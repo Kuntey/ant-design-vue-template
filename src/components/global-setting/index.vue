@@ -29,7 +29,6 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { message } from "ant-design-vue";
-// @ts-ignore
 import { useI18n } from "vue-i18n";
 import { useClipboard } from "@vueuse/core";
 import { useAppStore } from "@/store";

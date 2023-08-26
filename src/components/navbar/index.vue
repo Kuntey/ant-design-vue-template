@@ -200,7 +200,6 @@ import { LOCALE_OPTIONS } from "@/locale";
 import useLocale from "@/hooks/locale";
 import useUser from "@/hooks/user";
 import Menu from "@/components/menu/index.vue";
-// @ts-ignore
 import { useI18n } from "vue-i18n";
 import MessageBox from "../message-box/index.vue";
 
