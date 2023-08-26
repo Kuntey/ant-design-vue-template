@@ -22,7 +22,6 @@ export const regexUrl = new RegExp(
   "i",
 );
 
-export default null;
 /**
  * 参数处理
  * @param {*} params  参数
@@ -92,6 +91,4 @@ export function cloneDeep<T>(entity: any, cache = new WeakMap()): T {
   );
 }
 
-export { default as isImg } from "./isImg";
-export { default as isUrl } from "./isUrl";
-export { default as isNil } from "./isNil";
+export default null;
