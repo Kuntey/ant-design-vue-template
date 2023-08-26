@@ -2,7 +2,7 @@ import { defineConfig, loadEnv } from "vite";
 import path from "path";
 import vueJsx from "@vitejs/plugin-vue-jsx";
 import mkcert from "vite-plugin-mkcert";
-import createVitePlugins from "./vite/plugins/index";
+import createVitePlugins from "./vite/plugins";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode, command }) => {

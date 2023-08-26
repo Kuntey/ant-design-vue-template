@@ -12,10 +12,11 @@
       "skipLibCheck": true,
 
       /* Bundler mode */
-      "moduleResolution": "bundler",
+      "moduleResolution": "node",
       "allowImportingTsExtensions": true,
       "allowJs": true,
       "resolveJsonModule": true,
+      "esModuleInterop": true,
       "isolatedModules": true,
       "noEmit": true,
       "jsx": "preserve",
@@ -27,5 +28,5 @@
       "noFallthroughCasesInSwitch": true
     },
     "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue", "vite/**/*.ts", "auto-imports.d.ts", "components.d.ts"],
-    "references": [{ "path": "./tsconfig.node.json" }]
+    // "references": [{ "path": "./tsconfig.node.json" }]
   }
