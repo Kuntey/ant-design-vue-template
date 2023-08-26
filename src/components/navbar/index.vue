@@ -6,12 +6,7 @@
           alt="logo"
           src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
         />
-        <a-typography-title
-          :style="{ margin: 0, fontSize: '18px' }"
-          :heading="5"
-        >
-          Arco Pro
-        </a-typography-title>
+        <a-typography-title> Arco Pro </a-typography-title>
         <MenuFoldOutlined
           v-if="!topMenu && appStore.device === 'mobile'"
           style="font-size: 22px; cursor: pointer"
@@ -24,8 +19,8 @@
     </div>
     <ul class="right-side">
       <li>
-        <a-tooltip :title="$t('settings.search')">
-          <a-button class="nav-btn" type="outline" :shape="'circle'">
+        <a-tooltip :title="t('settings.search')">
+          <a-button class="nav-btn" type="dashed" :shape="'circle'">
             <template #icon>
               <SearchOutlined />
             </template>
@@ -33,10 +28,10 @@
         </a-tooltip>
       </li>
       <li>
-        <a-tooltip :title="$t('settings.language')">
+        <a-tooltip :title="t('settings.language')">
           <a-button
             class="nav-btn"
-            type="outline"
+            type="dashed"
             :shape="'circle'"
             @click="setDropDownVisible"
           >
@@ -68,13 +63,13 @@
         <a-tooltip
           :title="
             theme === 'light'
-              ? $t('settings.navbar.theme.toDark')
-              : $t('settings.navbar.theme.toLight')
+              ? t('settings.navbar.theme.toDark')
+              : t('settings.navbar.theme.toLight')
           "
         >
           <a-button
             class="nav-btn"
-            type="outline"
+            type="dashed"
             :shape="'circle'"
             @click="handleToggleTheme"
           >
@@ -86,12 +81,12 @@
         </a-tooltip>
       </li>
       <li>
-        <a-tooltip :title="$t('settings.navbar.alerts')">
+        <a-tooltip :title="t('settings.navbar.alerts')">
           <div class="message-box-trigger">
             <a-badge :count="9" dot>
               <a-button
                 class="nav-btn"
-                type="outline"
+                type="dashed"
                 :shape="'circle'"
                 @click="setPopoverVisible"
               >
@@ -116,13 +111,13 @@
         <a-tooltip
           :title="
             isFullscreen
-              ? $t('settings.navbar.screen.toExit')
-              : $t('settings.navbar.screen.toFull')
+              ? t('settings.navbar.screen.toExit')
+              : t('settings.navbar.screen.toFull')
           "
         >
           <a-button
             class="nav-btn"
-            type="outline"
+            type="dashed"
             :shape="'circle'"
             @click="toggleFullScreen"
           >
@@ -134,10 +129,10 @@
         </a-tooltip>
       </li>
       <li>
-        <a-tooltip :title="$t('settings.title')">
+        <a-tooltip :title="t('settings.title')">
           <a-button
             class="nav-btn"
-            type="outline"
+            type="dashed"
             :shape="'circle'"
             @click="setVisible"
           >
@@ -161,7 +156,7 @@
                 <a-space @click="switchRoles">
                   <TagOutlined />
                   <span>
-                    {{ $t("messageBox.switchRoles") }}
+                    {{ t("messageBox.switchRoles") }}
                   </span>
                 </a-space>
               </a-menu-item>
@@ -169,7 +164,7 @@
                 <a-space @click="$router.push({ name: 'Info' })">
                   <UserOutlined />
                   <span>
-                    {{ $t("messageBox.userCenter") }}
+                    {{ t("messageBox.userCenter") }}
                   </span>
                 </a-space>
               </a-menu-item>
@@ -177,7 +172,7 @@
                 <a-space @click="$router.push({ name: 'Setting' })">
                   <SettingOutlined />
                   <span>
-                    {{ $t("messageBox.userSettings") }}
+                    {{ t("messageBox.userSettings") }}
                   </span>
                 </a-space>
               </a-menu-item>
@@ -185,7 +180,7 @@
                 <a-space @click="handleLogout">
                   <ExportOutlined />
                   <span>
-                    {{ $t("messageBox.logout") }}
+                    {{ t("messageBox.logout") }}
                   </span>
                 </a-space>
               </a-menu-item>
@@ -205,7 +200,11 @@ import { LOCALE_OPTIONS } from "@/locale";
 import useLocale from "@/hooks/locale";
 import useUser from "@/hooks/user";
 import Menu from "@/components/menu/index.vue";
+// @ts-ignore
+import { useI18n } from "vue-i18n";
 import MessageBox from "../message-box/index.vue";
+
+const { t } = useI18n();
 
 const appStore = useAppStore();
 const userStore = useUserStore();
@@ -279,6 +278,11 @@ const toggleDrawerMenu = inject("toggleDrawerMenu") as () => void;
   display: flex;
   align-items: center;
   padding-left: 20px;
+
+  h1 {
+    font-size: 18px;
+    margin: 0;
+  }
 }
 
 .center-side {

@@ -7,20 +7,20 @@
     </a-button>
   </div>
   <a-drawer :width="300" unmount-on-close :visible="visible" @close="cancel">
-    <template #title> {{ $t("settings.title") }} </template>
-    <Block :options="contentOpts" :title="$t('settings.content')" />
-    <Block :options="othersOpts" :title="$t('settings.otherSettings')" />
+    <template #title> {{ t("settings.title") }} </template>
+    <Block :options="contentOpts" :title="t('settings.content')" />
+    <Block :options="othersOpts" :title="t('settings.otherSettings')" />
     <a-alert
-      :message="$t('settings.alertContent')"
+      :message="t('settings.alertContent')"
       type="info"
       show-icon
     ></a-alert>
     <template #footer>
       <a-button style="margin-right: 8px" @click="cancel">{{
-        $t("settings.close")
+        t("settings.close")
       }}</a-button>
       <a-button type="primary" @click="copySettings">{{
-        $t("settings.copySettings")
+        t("settings.copySettings")
       }}</a-button>
     </template>
   </a-drawer>
@@ -29,6 +29,7 @@
 <script lang="ts" setup>
 import { computed } from "vue";
 import { message } from "ant-design-vue";
+// @ts-ignore
 import { useI18n } from "vue-i18n";
 import { useClipboard } from "@vueuse/core";
 import { useAppStore } from "@/store";

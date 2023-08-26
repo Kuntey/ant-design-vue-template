@@ -70,6 +70,8 @@
 </style>
 
 <style lang="less" scoped>
+@screen-lg: 22px;
+
 // responsive
 @media (max-width: @screen-lg) {
   .container {

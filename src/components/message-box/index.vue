@@ -1,12 +1,12 @@
 <template>
   <a-spin style="display: block" :loading="loading">
-    <a-tabs v-model:activeKey="messageType" type="rounded" destroy-on-hide>
+    <a-tabs v-model:activeKey="messageType" type="card" destroy-on-hide>
       <a-tab-pane v-for="item in tabList" :key="item.key">
-        <template #title>
+        <template #tab>
           <span> {{ item.title }}{{ formatUnreadLength(item.key) }} </span>
         </template>
         <a-result v-if="!renderList.length" status="404">
-          <template #subtitle> {{ $t("messageBox.noContent") }} </template>
+          <template #subTitle> {{ t("messageBox.noContent") }} </template>
         </a-result>
         <List
           :render-list="renderList"
@@ -14,9 +14,9 @@
           @item-click="handleItemClick"
         />
       </a-tab-pane>
-      <template #extra>
+      <template #rightExtra>
         <a-button type="text" @click="emptyList">
-          {{ $t("messageBox.tab.button") }}
+          {{ t("messageBox.tab.button") }}
         </a-button>
       </template>
     </a-tabs>
@@ -25,6 +25,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive, toRefs, computed } from "vue";
+// @ts-ignore
 import { useI18n } from "vue-i18n";
 import {
   queryMessageList,
@@ -116,12 +117,15 @@ fetchSourceData();
 :deep(.arco-list-item-meta) {
   align-items: flex-start;
 }
+
 :deep(.arco-tabs-nav) {
   padding: 14px 0 12px 16px;
   border-bottom: 1px solid var(--color-neutral-3);
 }
+
 :deep(.arco-tabs-content) {
   padding-top: 0;
+
   .arco-result-subtitle {
     color: rgb(var(--gray-6));
   }

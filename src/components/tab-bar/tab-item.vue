@@ -10,7 +10,7 @@
       @click="goto(itemData)"
     >
       <span class="tag-link">
-        {{ $t(itemData.title) }}
+        {{ t(itemData.title) }}
       </span>
       <span
         class="anticon anticon-close ant-tag-close-icon ant-tag-close-btn"
@@ -21,12 +21,12 @@
     </a-checkable-tag>
     <!-- <a-tag :bordered="false" closable class="{ 'link-activated': itemData.fullPath === $route.fullPath }"
             @close="tagClose(itemData, index)" @click="goto(itemData)">
-            {{ $t(itemData.title) }}
+            {{ t(itemData.title) }}
         </a-tag> -->
     <!-- <span class="ant-tag ant-tag-size-medium ant-tag-checked"
             :class="{ 'link-activated': itemData.fullPath === $route.fullPath }" @click="goto(itemData)">
             <span class="tag-link">
-                {{ $t(itemData.title) }}
+                {{ t(itemData.title) }}
             </span>
             <span class="ant-icon-hover ant-tag-icon-hover ant-icon-hover-size-medium ant-tag-close-btn"
                 @click.stop="tagClose(itemData, index)">
@@ -84,6 +84,11 @@ import { useRouter, useRoute } from "vue-router";
 import { useTabBarStore } from "@/store";
 import type { TagProps } from "@/store/modules/tab-bar/types";
 import { DEFAULT_ROUTE_NAME, REDIRECT_ROUTE_NAME } from "@/router/constants";
+
+// @ts-ignore
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 // eslint-disable-next-line no-shadow
 enum Eaction {
@@ -168,7 +173,7 @@ const actionSelect = async (value: any) => {
       router.push({ name: itemData.name });
     }
   } else if (value === Eaction.others) {
-    const filterList = tagList.value.filter((el, idx) => {
+    const filterList = tagList.value.filter((_el, idx) => {
       return idx === 0 || idx === props.index;
     });
     tabBarStore.freshTabList(filterList);

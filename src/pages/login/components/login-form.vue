@@ -1,7 +1,7 @@
 <template>
   <div class="login-form-wrapper">
-    <div class="login-form-title">{{ $t("login.form.title") }}</div>
-    <div class="login-form-sub-title">{{ $t("login.form.title") }}</div>
+    <div class="login-form-title">{{ t("login.form.title") }}</div>
+    <div class="login-form-sub-title">{{ t("login.form.title") }}</div>
     <div class="login-form-error-msg">{{ errorMessage }}</div>
     <a-form
       ref="loginForm"
@@ -12,13 +12,13 @@
     >
       <a-form-item
         field="account"
-        :rules="[{ required: true, message: $t('login.form.account.errMsg') }]"
+        :rules="[{ required: true, message: t('login.form.account.errMsg') }]"
         :validate-trigger="['change', 'blur']"
         hide-label
       >
         <a-input
           v-model="userInfo.account"
-          :placeholder="$t('login.form.account.placeholder')"
+          :placeholder="t('login.form.account.placeholder')"
         >
           <template #prefix>
             <UserOutlined />
@@ -27,13 +27,13 @@
       </a-form-item>
       <a-form-item
         field="password"
-        :rules="[{ required: true, message: $t('login.form.password.errMsg') }]"
+        :rules="[{ required: true, message: t('login.form.password.errMsg') }]"
         :validate-trigger="['change', 'blur']"
         hide-label
       >
         <a-input-password
           v-model="userInfo.password"
-          :placeholder="$t('login.form.password.placeholder')"
+          :placeholder="t('login.form.password.placeholder')"
           allow-clear
         >
           <template #prefix>
@@ -48,15 +48,15 @@
             :model-value="loginConfig.rememberPassword"
             @change="setRememberPassword as any"
           >
-            {{ $t("login.form.rememberPassword") }}
+            {{ t("login.form.rememberPassword") }}
           </a-checkbox>
-          <a-link>{{ $t("login.form.forgetPassword") }}</a-link>
+          <a-link>{{ t("login.form.forgetPassword") }}</a-link>
         </div>
         <a-button type="primary" html-type="submit" long :loading="loading">
-          {{ $t("login.form.login") }}
+          {{ t("login.form.login") }}
         </a-button>
         <!-- <a-button type="text" long class="login-form-register-btn">
-          {{ $t('login.form.register') }}
+          {{ t('login.form.register') }}
         </a-button> -->
       </a-space>
     </a-form>
@@ -67,6 +67,7 @@
 import { ref, reactive } from "vue";
 import { useRouter } from "vue-router";
 import { message } from "ant-design-vue";
+// @ts-ignore
 import { useI18n } from "vue-i18n";
 import { useStorage } from "@vueuse/core";
 import { useUserStore } from "@/store";

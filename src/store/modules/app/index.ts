@@ -46,23 +46,20 @@ const useAppStore = defineStore("app", {
     async fetchServerMenuConfig() {
       try {
         notification.info({
-          id: "menuNotice", // Keep the instance id the same
-          content: "loading",
-          closable: true,
+          key: "menuNotice", // Keep the instance id the same
+          message: "loading",
         });
         const { data } = await getMenuList();
         this.serverMenu = data;
         notification.success({
-          id: "menuNotice",
-          content: "success",
-          closable: true,
+          key: "menuNotice",
+          message: "success",
         });
       } catch (error) {
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
         notification.error({
-          id: "menuNotice",
-          content: "error",
-          closable: true,
+          key: "menuNotice",
+          message: "error",
         });
       }
     },

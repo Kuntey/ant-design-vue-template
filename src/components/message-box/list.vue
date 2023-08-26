@@ -38,10 +38,7 @@
                 }"
                 >{{ item.content }}</a-typography-paragraph
               >
-              <a-typography-text
-                v-if="item.type === 'message'"
-                class="time-text"
-              >
+              <a-typography-text v-if="item.type === 'message'">
                 {{ item.time }}
               </a-typography-text>
             </div>
@@ -56,10 +53,10 @@
         :class="{ 'add-border-top': renderList.length < showMax }"
       >
         <div class="footer-wrap">
-          <a-link @click="allRead">{{ $t("messageBox.allRead") }}</a-link>
+          <a-link @click="allRead">{{ t("messageBox.allRead") }}</a-link>
         </div>
         <div class="footer-wrap">
-          <a-link>{{ $t("messageBox.viewMore") }}</a-link>
+          <a-link>{{ t("messageBox.viewMore") }}</a-link>
         </div>
       </a-space>
     </template>
@@ -73,6 +70,11 @@
 <script lang="ts" setup>
 import { PropType } from "vue";
 import { MessageRecord, MessageListType } from "@/api/message";
+
+// @ts-ignore
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 const props = defineProps({
   renderList: {

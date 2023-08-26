@@ -4,13 +4,17 @@
       <AppstoreOutlined />
     </a-breadcrumb-item>
     <a-breadcrumb-item v-for="item in items" :key="item">
-      {{ $t(item) }}
+      {{ t(item) }}
     </a-breadcrumb-item>
   </a-breadcrumb>
 </template>
 
 <script lang="ts" setup>
 import { PropType } from "vue";
+// @ts-ignore
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n();
 
 defineProps({
   items: {

@@ -16,7 +16,8 @@ const showModal = () => {
   open.value = true;
 };
 
-const handleOk = (e: MouseEvent) => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const handleOk = (_e: MouseEvent) => {
   open.value = false;
 };
 </script>

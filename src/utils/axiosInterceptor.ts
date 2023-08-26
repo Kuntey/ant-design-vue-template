@@ -1,6 +1,6 @@
 import axios from "axios";
-import type { AxiosHeaders, AxiosResponse } from "axios";
-import { message, Modal } from "ant-design-vue";
+import type { AxiosHeaders } from "axios";
+import { message } from "ant-design-vue";
 // import { useUserStore } from '@/store';
 import { getToken } from "@/utils/auth";
 import { tansParams } from "@/utils";

@@ -2,7 +2,7 @@
   <div class="block">
     <h5 class="title">{{ title }}</h5>
     <div v-for="option in options" :key="option.name" class="switch-wrapper">
-      <span>{{ $t(option.name) }}</span>
+      <span>{{ t(option.name) }}</span>
       <form-wrapper
         :type="option.type || 'switch'"
         :name="option.key"
@@ -16,7 +16,11 @@
 <script lang="ts" setup>
 import { PropType } from "vue";
 import { useAppStore } from "@/store";
+// @ts-ignore
+import { useI18n } from "vue-i18n";
 import FormWrapper from "./form-wrapper.vue";
+
+const { t } = useI18n();
 
 interface OptionsProps {
   name: string;
