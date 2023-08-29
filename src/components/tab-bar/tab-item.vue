@@ -193,7 +193,7 @@ const actionSelect = async (value: any) => {
 </script>
 
 <style scoped lang="less">
-.ant-tag-borderless {
+.@{ant-prefix}-tag-borderless {
   border-color: transparent;
   background: rgba(0, 0, 0, 0.04);
 }
@@ -210,23 +210,23 @@ const actionSelect = async (value: any) => {
     color: rgb(var(--link-6));
   }
 
-  & > .ant-tag-close-btn {
+  & > .@{ant-prefix}-tag-close-btn {
     color: rgb(var(--link-6));
   }
 }
 
-:deep(.ant-dropdown-option-content) {
+:deep(.@{ant-prefix}-dropdown-option-content) {
   span {
     margin-left: 10px;
   }
 }
 
-.ant-dropdown-open {
+.@{ant-prefix}-dropdown-open {
   .tag-link {
     color: rgb(var(--danger-6));
   }
 
-  .ant-tag-close-btn {
+  .@{ant-prefix}-tag-close-btn {
     color: rgb(var(--danger-6));
   }
 }

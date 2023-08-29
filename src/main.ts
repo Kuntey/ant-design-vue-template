@@ -16,10 +16,10 @@ import i18n from "./locale";
 
 // eslint-disable-next-line import/no-unresolved
 import "uno.css"; // unocss
-import "./utils/axiosInterceptor"; // axios全局拦截器
+import "@/utils/axiosInterceptor"; // axios全局拦截器
 
-import "./assets/style/index.less";
-import "@/assets/style/global.less";
+import "@/assets/styles/index.less";
+import "@/assets/styles/global.less";
 
 const app = createApp(App);
 
