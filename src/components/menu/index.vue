@@ -144,14 +144,14 @@ export default defineComponent({
 </script>
 
 <style lang="less" scoped>
-:deep(.arco-menu-inner) {
-  .arco-menu-inline-header {
+:deep(.@{ant-prefix}-menu-inner) {
+  .@{ant-prefix}-menu-inline-header {
     display: flex;
     align-items: center;
   }
 
-  .arco-icon {
-    &:not(.arco-icon-down) {
+  .@{ant-prefix}-icon {
+    &:not(.@{ant-prefix}-icon-down) {
       font-size: 18px;
     }
   }

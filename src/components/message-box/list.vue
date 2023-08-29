@@ -98,18 +98,18 @@ const showMax = 3;
 </script>
 
 <style scoped lang="less">
-:deep(.arco-list) {
-  .arco-list-item {
+:deep(.@{ant-prefix}-list) {
+  .@{ant-prefix}-list-item {
     min-height: 86px;
     border-bottom: 1px solid rgb(var(--gray-3));
   }
 
-  .arco-list-item-extra {
+  .@{ant-prefix}-list-item-extra {
     position: absolute;
     right: 20px;
   }
 
-  .arco-list-item-meta-content {
+  .@{ant-prefix}-list-item-meta-content {
     flex: 1;
   }
 
@@ -122,17 +122,17 @@ const showMax = 3;
     color: rgb(var(--gray-6));
   }
 
-  .arco-empty {
+  .@{ant-prefix}-empty {
     display: none;
   }
 
-  .arco-list-footer {
+  .@{ant-prefix}-list-footer {
     padding: 0;
     height: 50px;
     line-height: 50px;
     border-top: none;
 
-    .arco-space-item {
+    .@{ant-prefix}-space-item {
       width: 100%;
       border-right: 1px solid rgb(var(--gray-3));
 
@@ -150,7 +150,7 @@ const showMax = 3;
     text-align: center;
   }
 
-  .arco-typography {
+  .@{ant-prefix}-typography {
     margin-bottom: 0;
   }
 

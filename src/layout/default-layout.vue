@@ -142,7 +142,7 @@ onMounted(() => {
     content: "";
   }
 
-  > :deep(.arco-layout-sider-children) {
+  > :deep(.@{ant-prefix}-layout-sider-children) {
     overflow-y: hidden;
   }
 }
@@ -152,7 +152,7 @@ onMounted(() => {
   overflow: auto;
   overflow-x: hidden;
 
-  :deep(.arco-menu) {
+  :deep(.@{ant-prefix}-menu) {
     ::-webkit-scrollbar {
       width: 12px;
       height: 4px;

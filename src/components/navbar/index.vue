@@ -329,7 +329,7 @@ const toggleDrawerMenu = inject("toggleDrawerMenu") as () => void;
 
 <style lang="less">
 .message-popover {
-  .arco-popover-content {
+  .@{ant-prefix}-popover-content {
     margin-top: 0;
   }
 }

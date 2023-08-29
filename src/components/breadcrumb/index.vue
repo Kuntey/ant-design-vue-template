@@ -29,7 +29,7 @@ defineProps({
 .container-breadcrumb {
   margin: 16px 0;
 
-  :deep(.arco-breadcrumb-item) {
+  :deep(.@{ant-prefix}-breadcrumb-item) {
     color: rgb(var(--gray-6));
 
     &:last-child {

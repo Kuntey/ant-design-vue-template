@@ -109,23 +109,23 @@ fetchSourceData();
 </script>
 
 <style scoped lang="less">
-:deep(.arco-popover-popup-content) {
+:deep(.@{ant-prefix}-popover-popup-content) {
   padding: 0;
 }
 
-:deep(.arco-list-item-meta) {
+:deep(.@{ant-prefix}-list-item-meta) {
   align-items: flex-start;
 }
 
-:deep(.arco-tabs-nav) {
+:deep(.@{ant-prefix}-tabs-nav) {
   padding: 14px 0 12px 16px;
   border-bottom: 1px solid var(--color-neutral-3);
 }
 
-:deep(.arco-tabs-content) {
+:deep(.@{ant-prefix}-tabs-content) {
   padding-top: 0;
 
-  .arco-result-subtitle {
+  .@{ant-prefix}-result-subtitle {
     color: rgb(var(--gray-6));
   }
 }
