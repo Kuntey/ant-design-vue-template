@@ -1,4 +1,3 @@
-import { createPinia } from "pinia";
 import useGlobalStore from "./modules/global";
 import useAppStore from "./modules/app";
 import useUserStore from "./modules/user";

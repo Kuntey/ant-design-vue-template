@@ -46,7 +46,6 @@
 </template>
 
 <script lang="ts" setup>
-import { useRouter, useRoute } from "vue-router";
 import { useAppStore, useUserStore } from "@/store";
 import Menu from "@/components/menu/index.vue";
 import NavBar from "@/components/navbar/index.vue";

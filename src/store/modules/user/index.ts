@@ -1,4 +1,3 @@
-import { defineStore } from "pinia";
 import { setToken, clearToken } from "@/utils/auth";
 import {
   login as userLogin,

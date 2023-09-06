@@ -1,5 +1,4 @@
 <script lang="tsx">
-import { defineComponent, ref, h, compile, computed } from "vue";
 import { useRoute, useRouter, RouteRecordRaw } from "vue-router";
 import type { RouteMeta } from "vue-router";
 import { useAppStore } from "@/store";
@@ -93,7 +92,7 @@ export default defineComponent({
           _route.forEach((element) => {
             // This is demo, modify nodes as needed
             const icon = element?.meta?.icon
-              ? () => h(compile(`<${element?.meta?.icon}/>`))
+              ? () => h(resolveComponent(`${element?.meta?.icon}`))
               : null;
             const node =
               element?.children && element?.children.length !== 0 ? (
@@ -101,7 +100,8 @@ export default defineComponent({
                   key={element?.name}
                   v-slots={{
                     icon,
-                    title: () => h(compile(element?.meta?.title || "")),
+                    title: () =>
+                      h(resolveComponent(element?.meta?.title || "")),
                   }}
                 >
                   {travel(element?.children)}

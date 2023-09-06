@@ -1,4 +1,3 @@
-import { defineStore } from "pinia";
 import { notification } from "ant-design-vue";
 import type { RouteRecordNormalized } from "vue-router";
 import defaultSettings from "@/config/settings.json";
