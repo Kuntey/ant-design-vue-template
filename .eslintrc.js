@@ -47,6 +47,7 @@ module.exports = {
         'vue/require-direct-export': 1,
         'vue/multi-word-component-names': 0,
         'vue/first-attribute-linebreak': 0,
+
         // Allow @ts-ignore comment
         '@typescript-eslint/ban-ts-comment': 0,
         '@typescript-eslint/no-unused-vars': 1,
@@ -66,10 +67,13 @@ module.exports = {
         'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
         'no-param-reassign': 0,
         'no-underscore-dangle': 0,
+        'no-restricted-syntax': 0,
+        'no-plusplus': 0,
         'prefer-regex-literals': 0,
         'import/no-extraneous-dependencies': 0,
         'import/prefer-default-export': 0,
-        'no-restricted-syntax': 0,
         'guard-for-in': 0,
+        'func-names': 0,
+        'no-useless-escape': 0,
     },
 };
