@@ -75,5 +75,6 @@ module.exports = {
         'guard-for-in': 0,
         'func-names': 0,
         'no-useless-escape': 0,
+        'max-len': 0
     },
 };

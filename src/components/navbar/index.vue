@@ -5,7 +5,7 @@
         <img
           alt="logo"
           src="//p3-armor.byteimg.com/tos-cn-i-49unhts6dw/dfdba5317c0c20ce20e64fac803d52bc.svg~tplv-49unhts6dw-image.image"
-        />
+        >
         <a-typography-title> Arco Pro </a-typography-title>
         <MenuFoldOutlined
           v-if="!topMenu && appStore.device === 'mobile'"
@@ -41,7 +41,7 @@
           </a-button>
         </a-tooltip>
         <a-dropdown trigger="click">
-          <div ref="triggerBtn" class="trigger-btn"></div>
+          <div ref="triggerBtn" class="trigger-btn" />
           <template #overlay>
             <a-menu>
               <a-menu-item
@@ -101,7 +101,7 @@
           :content-style="{ padding: 0, minWidth: '400px' }"
           content-class="message-popover"
         >
-          <div ref="refBtn" class="ref-btn"></div>
+          <div ref="refBtn" class="ref-btn" />
           <template #content>
             <message-box />
           </template>
@@ -148,7 +148,7 @@
             :size="32"
             :style="{ marginRight: '8px', cursor: 'pointer' }"
           >
-            <img alt="avatar" :src="avatar" />
+            <img alt="avatar" :src="avatar">
           </a-avatar>
           <template #overlay>
             <a-menu>
@@ -193,15 +193,15 @@
 </template>
 
 <script lang="ts" setup>
-import { message } from "ant-design-vue";
-import { useDark, useToggle, useFullscreen } from "@vueuse/core";
-import { useAppStore, useUserStore } from "@/store";
-import { LOCALE_OPTIONS } from "@/locale";
-import useLocale from "@/hooks/locale";
-import useUser from "@/hooks/user";
-import Menu from "@/components/menu/index.vue";
-import { useI18n } from "vue-i18n";
-import MessageBox from "../message-box/index.vue";
+import { message } from 'ant-design-vue';
+import { useDark, useToggle, useFullscreen } from '@vueuse/core';
+import { useAppStore, useUserStore } from '@/store';
+import { LOCALE_OPTIONS } from '@/locale';
+import useLocale from '@/hooks/locale';
+import useUser from '@/hooks/user';
+import Menu from '@/components/menu/index';
+import { useI18n } from 'vue-i18n';
+import MessageBox from '../message-box/index.vue';
 
 const { t } = useI18n();
 
@@ -211,19 +211,15 @@ const { logout } = useUser();
 const { changeLocale, currentLocale } = useLocale();
 const { isFullscreen, toggle: toggleFullScreen } = useFullscreen();
 const locales = [...LOCALE_OPTIONS];
-const avatar = computed(() => {
-  return userStore.avatar;
-});
-const theme = computed(() => {
-  return appStore.theme;
-});
+const avatar = computed(() => userStore.avatar);
+const theme = computed(() => appStore.theme);
 const topMenu = computed(() => appStore.topMenu && appStore.menu);
 const isDark = useDark({
-  selector: "body",
-  attribute: "theme",
-  valueDark: "dark",
-  valueLight: "light",
-  storageKey: "theme",
+  selector: 'body',
+  attribute: 'theme',
+  valueDark: 'dark',
+  valueLight: 'light',
+  storageKey: 'theme',
   onChanged(dark: boolean) {
     // overridden default behavior
     appStore.toggleTheme(dark);
@@ -239,7 +235,7 @@ const setVisible = () => {
 const refBtn = ref();
 const triggerBtn = ref();
 const setPopoverVisible = () => {
-  const event = new MouseEvent("click", {
+  const event = new MouseEvent('click', {
     view: window,
     bubbles: true,
     cancelable: true,
@@ -250,7 +246,7 @@ const handleLogout = () => {
   logout();
 };
 const setDropDownVisible = () => {
-  const event = new MouseEvent("click", {
+  const event = new MouseEvent('click', {
     view: window,
     bubbles: true,
     cancelable: true,
@@ -261,7 +257,7 @@ const switchRoles = async () => {
   const res = await userStore.switchRoles();
   message.success(res as string);
 };
-const toggleDrawerMenu = inject("toggleDrawerMenu") as () => void;
+const toggleDrawerMenu = inject('toggleDrawerMenu') as () => void;
 </script>
 
 <style scoped lang="less">

@@ -5,31 +5,16 @@
     </div>
     <a-layout>
       <a-layout>
-        <a-layout-sider
-          v-if="renderMenu"
-          v-show="!hideMenu"
-          class="layout-sider"
-          breakpoint="xl"
-          :collapsed="collapsed"
-          :collapsible="true"
-          :width="menuWidth"
-          theme="light"
-          :style="{ paddingTop: navbar ? '60px' : '' }"
-          :hide-trigger="true"
-          @collapse="setCollapsed"
+        <a-layout-sider v-if="renderMenu" v-show="!hideMenu" class="layout-sider" breakpoint="xl" :collapsed="collapsed"
+                        :collapsible="true" :width="menuWidth" theme="light" :style="{ paddingTop: navbar ? '60px' : '' }"
+                        :hide-trigger="true" @collapse="setCollapsed"
         >
           <div class="menu-wrapper">
             <Menu />
           </div>
         </a-layout-sider>
-        <a-drawer
-          v-if="hideMenu"
-          :visible="drawerVisible"
-          placement="left"
-          :footer="false"
-          mask-closable
-          :closable="false"
-          @cancel="drawerCancel"
+        <a-drawer v-if="hideMenu" :visible="drawerVisible" placement="left" :footer="false" mask-closable
+                  :closable="false" @cancel="drawerCancel"
         >
           <Menu />
         </a-drawer>
@@ -46,14 +31,14 @@
 </template>
 
 <script lang="ts" setup>
-import { useAppStore, useUserStore } from "@/store";
-import Menu from "@/components/menu/index.vue";
-import NavBar from "@/components/navbar/index.vue";
-import Footer from "@/components/footer/index.vue";
-import TabBar from "@/components/tab-bar/index.vue";
-import usePermission from "@/hooks/permission";
-import useResponsive from "@/hooks/responsive";
-import PageLayout from "./page-layout.vue";
+import { useAppStore, useUserStore } from '@/store';
+import Menu from '@/components/menu/index';
+import NavBar from '@/components/navbar/index.vue';
+import Footer from '@/components/footer/index.vue';
+import TabBar from '@/components/tab-bar/index.vue';
+import usePermission from '@/hooks/permission';
+import useResponsive from '@/hooks/responsive';
+import PageLayout from './page-layout.vue';
 
 const isInit = ref(false);
 const appStore = useAppStore();
@@ -62,22 +47,17 @@ const router = useRouter();
 const route = useRoute();
 const permission = usePermission();
 useResponsive(true);
-const navbarHeight = `60px`;
+const navbarHeight = '60px';
 const navbar = computed(() => appStore.navbar);
 const renderMenu = computed(() => appStore.menu && !appStore.topMenu);
 const hideMenu = computed(() => appStore.hideMenu);
 const footer = computed(() => appStore.footer);
-const menuWidth = computed(() => {
-  return appStore.menuCollapse ? 80 : appStore.menuWidth;
-});
-const collapsed = computed(() => {
-  return appStore.menuCollapse;
-});
+const menuWidth = computed(() => (appStore.menuCollapse ? 80 : appStore.menuWidth));
+const collapsed = computed(() => appStore.menuCollapse);
 const paddingStyle = computed(() => {
-  const paddingLeft =
-    renderMenu.value && !hideMenu.value
-      ? { paddingLeft: `${menuWidth.value}px` }
-      : {};
+  const paddingLeft = renderMenu.value && !hideMenu.value
+    ? { paddingLeft: `${menuWidth.value}px` }
+    : {};
   const paddingTop = navbar.value ? { paddingTop: navbarHeight } : {};
   return { ...paddingLeft, ...paddingTop };
 });
@@ -88,15 +68,14 @@ const setCollapsed = (val: boolean) => {
 watch(
   () => userStore.role,
   (roleValue) => {
-    if (roleValue && !permission.accessRouter(route))
-      router.push({ name: "notFound" });
+    if (roleValue && !permission.accessRouter(route)) router.push({ name: 'notFound' });
   },
 );
 const drawerVisible = ref(false);
 const drawerCancel = () => {
   drawerVisible.value = false;
 };
-provide("toggleDrawerMenu", () => {
+provide('toggleDrawerMenu', () => {
   drawerVisible.value = !drawerVisible.value;
 });
 onMounted(() => {

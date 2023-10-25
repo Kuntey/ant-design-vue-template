@@ -1,10 +1,11 @@
-<script lang="tsx">
 import { useRoute, useRouter, RouteRecordRaw } from "vue-router";
 import type { RouteMeta } from "vue-router";
 import { useAppStore } from "@/store";
 import { listenerRouteChange } from "@/utils/route-listener";
 import { openWindow, regexUrl } from "@/utils";
 import useMenuTree from "./use-menu-tree";
+import './index.module.less';
+import { Menu, SubMenu } from "ant-design-vue";
 
 export default defineComponent({
   emit: ["collapse"],
@@ -96,24 +97,23 @@ export default defineComponent({
               : null;
             const node =
               element?.children && element?.children.length !== 0 ? (
-                <a-sub-menu
+                <SubMenu
                   key={element?.name}
                   v-slots={{
                     icon,
-                    title: () =>
-                      h(resolveComponent(element?.meta?.title || "")),
+                    title: element?.meta?.title || "",
                   }}
                 >
                   {travel(element?.children)}
-                </a-sub-menu>
+                </SubMenu>
               ) : (
-                <a-menu-item
+                <Menu.Item
                   key={element?.name}
                   v-slots={{ icon }}
                   onClick={() => goto(element)}
                 >
                   {element?.meta?.title || ""}
-                </a-menu-item>
+                </Menu.Item>
               );
             nodes.push(node as never);
           });
@@ -124,7 +124,7 @@ export default defineComponent({
     };
 
     return () => (
-      <a-menu
+      <Menu
         mode={topMenu.value ? "horizontal" : "inline"}
         v-model:collapsed={collapsed.value}
         v-model:open-keys={openKeys.value}
@@ -137,23 +137,7 @@ export default defineComponent({
         onCollapse={setCollapse}
       >
         {renderSubMenu()}
-      </a-menu>
+      </Menu>
     );
   },
 });
-</script>
-
-<style lang="less" scoped>
-:deep(.@{ant-prefix}-menu-inner) {
-  .@{ant-prefix}-menu-inline-header {
-    display: flex;
-    align-items: center;
-  }
-
-  .@{ant-prefix}-icon {
-    &:not(.@{ant-prefix}-icon-down) {
-      font-size: 18px;
-    }
-  }
-}
-</style>
