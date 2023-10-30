@@ -47,6 +47,8 @@ module.exports = {
         'vue/require-direct-export': 1,
         'vue/multi-word-component-names': 0,
         'vue/first-attribute-linebreak': 0,
+        'vue/script-indent': 0,
+        'vue/html-indent': 0,
 
         // Allow @ts-ignore comment
         '@typescript-eslint/ban-ts-comment': 0,
@@ -75,6 +77,7 @@ module.exports = {
         'guard-for-in': 0,
         'func-names': 0,
         'no-useless-escape': 0,
-        'max-len': 0
+        'max-len': 0,
+        'indent': ['off', 2]
     },
 };
